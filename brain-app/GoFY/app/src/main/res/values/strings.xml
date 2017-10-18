@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">GoFY</string>
+    <string name="title_activity_home">GoFY</string>
+    <string name="loading">Cargando…</string>
+    <string name="message_error_1">Autenticación fallida, intente más tarde por favor.</string>
+    <string name="message_1">Bienvenido a GoFY</string>
+    <string name="message_error_3">No se puede iniciar sesión en estos momentos, intenta más tarde por favor</string>
+    <string name="message_error_4">Sin acceso a internet…</string>
+</resources>

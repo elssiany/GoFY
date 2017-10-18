@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "936411211098",
+    "firebase_url": "https://gofy-c1730.firebaseio.com",
+    "project_id": "gofy-c1730",
+    "storage_bucket": "gofy-c1730.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936411211098:android:5b217b2c1cd2e4a8",
+        "android_client_info": {
+          "package_name": "com.dkbrothers.app.gofy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936411211098-s3t74tfvdfamasmcgsgvj8lq0vlmbdv3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dkbrothers.app.gofy",
+            "certificate_hash": "0f6f38e2c20ad7dbeb03e96163d14e28a2700020"
+          }
+        },
+        {
+          "client_id": "936411211098-qdi27nvq9tfc1arncs0aclprg8ohd0ed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxH5-P_liJQxX1rNQsg7YRyIGA1UHqjdo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936411211098-qdi27nvq9tfc1arncs0aclprg8ohd0ed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

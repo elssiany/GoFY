@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dkbrothers.app.gofy.activities.MainActivity">
+
+
+    <TextView
+       android:textColor="@color/md_white_1000"
+        android:typeface="serif"
+        android:textStyle="bold"
+        android:layout_gravity="center|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GoFY Sistema De Seguridad" />
+
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/rectangle_white"
+        android:layout_gravity="center"
+        android:id="@+id/containerForm"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/btn_access_to_system"
+            android:drawableEnd="@drawable/ic_done_white_24dp"
+            android:layout_gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/md_white_1000"
+            android:background="@drawable/rectangle_primary_color"
+            android:layout_margin="10dp"
+            android:text="Acceder a un sistema"
+            android:layout_marginBottom="20dp"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/btn_register_system"
+            android:layout_gravity="center"
+            android:padding="8dp"
+            android:textColor="@color/md_white_1000"
+            android:background="@drawable/rectangle_primary_color"
+            android:layout_margin="10dp"
+            android:text="Registrar sistema"
+            android:layout_marginBottom="20dp"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:visibility="visible"
+                android:id="@+id/form_1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginBottom="10dp"
+                        android:drawableTop="@mipmap/ic_launcher"
+                        android:textSize="20sp"
+                        android:textStyle="bold|italic"
+                        android:gravity="center"
+                        android:text="Tienes una contraseña de acceso al sistema?"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:gravity="center"
+                        android:hint="Ingresar contraseña"
+                        android:id="@+id/input_code_accesss"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/btn_register"
+                        android:layout_gravity="center"
+                        android:padding="8dp"
+                        android:textColor="@color/md_white_1000"
+                        android:background="@drawable/rectangle_primary_color"
+                        android:layout_margin="10dp"
+                        android:text="Registrar"
+                        android:layout_marginBottom="20dp"
+                        android:textSize="14sp"
+                        android:textStyle="italic"
+                        android:gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/form_2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:drawableTop="@mipmap/ic_launcher"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:gravity="center"
+                android:text="Ya tienes el sistema GoFY?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:padding="2dp"
+                android:textStyle="bold|italic"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Ingrese ID del producto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:hint="Ej: ELKKJN94943"
+                android:id="@+id/input_id_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:padding="2dp"
+                android:textStyle="bold|italic"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:text="Dele nombre al sistema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:hint="Mi casa, bodega..."
+                android:id="@+id/input_name_system"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:padding="2dp"
+                android:textStyle="bold|italic"
+                android:textSize="16sp"
+                android:gravity="start"
+                android:text="Cree una contraseña para que nuevas personas se registren al sistema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:hint="Ingresar contraseña"
+                android:id="@+id/input_code_accesss_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:drawableTop="@mipmap/ic_launcher"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:text="Seguridad tecnologica personalizable, simple y potente para tu hogar o bodega y mucho más"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <com.google.android.gms.common.SignInButton
+            android:visibility="visible"
+            android:layout_gravity="center"
+            android:id="@+id/sign_in_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp" />
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

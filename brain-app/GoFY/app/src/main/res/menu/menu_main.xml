@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.dkbrothers.app.jackygifts.activities.MainActivity">
+
+    <item
+        android:icon="@drawable/ic_add_to_queue_white_24dp"
+        android:id="@+id/action_add_system"
+        android:title="Agregar sistema"
+        app:showAsAction="ifRoom" />
+
+</menu>

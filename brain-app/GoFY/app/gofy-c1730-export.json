@@ -1,0 +1,83 @@
+{
+  "active-systems" : {
+    "-Kw24TH46pgvGBWBr8lQ" : {
+      "detaills" : {
+        "lock-system" : false,
+        "modeScan" : false,
+        "name" : "Casa Familiar",
+        "password" : 123456
+      },
+      "sensors" : {
+        "HJHJ23jkfk11111" : {
+          "description" : "Alarma para alertar que hay intrusos",
+          "location" : "Centro de la casa",
+          "name" : "Alarma",
+          "type" : "A"
+        },
+        "HJHJ23jkfk" : {
+          "description" : "Sensor para detectar intrusos o cosas",
+          "location" : "Ventana Patio",
+          "name" : "Sensor Infrarrojo",
+          "type" : "DM"
+        },
+        "fdjgjkdg94" : {
+          "descripcion" : "Sensor Para detectar intrusos",
+          "location" : "Ventana Trasera",
+          "name" : "Sensor Infrarojo",
+          "type" : "DMD"
+        }
+      },
+      "system-information" : {
+        "alarm" : false,
+        "valueCPU" : "23",
+        "valueCPUTemp" : "22",
+        "valueRAM" : "34"
+      },
+      "users" : {
+        "4MSh47DJmdOhrYNkxSqAk2DZYSV2" : {
+          "codeAccess" : 5050,
+          "id" : "4MSh47DJmdOhrYNkxSqAk2DZYSV2",
+          "name" : "Laura Suarez",
+          "photoUrl" : "https://lh5.googleusercontent.com/-yuY0CIjz_G4/AAAAAAAAAAI/AAAAAAAAAR8/i99xXOEC840/photo.jpg",
+          "status" : 1
+        }
+      }
+    }
+  },
+  "list-product-ids" : {
+    "-Kw24TH46pgvGBWBr8lQ" : false
+  },
+  "messages" : {
+    "-Kw24TH46pgvGBWBr8lQ" : {
+      "name" : "kevin serrano",
+      "photoUrl" : "https://lh5.googleusercontent.com/-yuY0CIjz_G4/AAAAAAAAAAI/AAAAAAAAAR8/i99xXOEC840/photo.jpg",
+      "text" : 1507689169059
+    },
+    "-Kw6DSSguxxvTannD9YZ" : {
+      "name" : "Laura Suarez",
+      "photoUrl" : "https://pbs.twimg.com/profile_images/842901396496269312/zsPgHS-p.jpg",
+      "text" : 1507688858358
+    }
+  },
+  "password-access-users-registation" : {
+    "-Kw24TH46pgvGBWBr8lQ" : {
+      "id" : "-Kw24TH46pgvGBWBr8lQ",
+      "password" : 123456
+    }
+  },
+  "users" : {
+    "4MSh47DJmdOhrYNkxSqAk2DZYSV2" : {
+      "id" : "4MSh47DJmdOhrYNkxSqAk2DZYSV2",
+      "idLicense" : "-Kw24TH46pgvGBWBr8lQ",
+      "isAdmin" : true,
+      "name" : "kevin serrano",
+      "photoUrl" : "https://lh5.googleusercontent.com/-yuY0CIjz_G4/AAAAAAAAAAI/AAAAAAAAAR8/i99xXOEC840/photo.jpg"
+    }
+  },
+  "users-registration-key" : {
+    "ldskghflghjk" : {
+      "idLicense" : "-Kw24TH46pgvGBWBr8lQ",
+      "key" : 1234
+    }
+  }
+}

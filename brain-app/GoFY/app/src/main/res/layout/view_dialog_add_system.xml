@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="@drawable/rectangle_white"
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_margin="10dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+
+    <TextView
+        android:layout_marginBottom="14dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:text="Agregar nuevo sistema GoFY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:padding="2dp"
+        android:textStyle="bold|italic"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="Ingrese ID del producto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="Ej: ELKKJN94943"
+        android:id="@+id/input_id_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:padding="2dp"
+        android:textStyle="bold|italic"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:text="Dele nombre al sistema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="Mi casa, bodega..."
+        android:id="@+id/input_name_system"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:padding="2dp"
+        android:textStyle="bold|italic"
+        android:textSize="16sp"
+        android:gravity="start"
+        android:text="Cree una contraseña para que nuevas personas se registren al sistema"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:hint="Ingresar contraseña"
+        android:id="@+id/input_code_accesss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textAllCaps="true"
+        android:text="Agregar"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        android:padding="8dp"
+        android:gravity="center"
+        android:id="@+id/btn_add_system"
+        android:textColor="@color/md_white_1000"
+        android:background="@drawable/rectangle_primary_color"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null" />
+
+
+
+    <TextView
+        android:padding="2dp"
+        android:layout_gravity="center"
+        android:textStyle="bold|italic"
+        android:textSize="12sp"
+        android:gravity="center"
+       android:text="Tienes problemas o dudas? contacta un asesor al instante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+    <!--
+
+    <EditText
+            android:inputType="text"
+            android:id="@+id/input_name"
+            android:gravity="center"
+            android:hint="@string/ingresa_tu_nombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:inputType="text"
+            android:id="@+id/input_mail"
+            android:gravity="center"
+            android:hint="@string/ingresa_tu_e_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        -->
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/btn_call"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:text="► +57 3024592892"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

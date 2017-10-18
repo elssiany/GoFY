@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/container_intro"
+            android:padding="10dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/rectangle_white"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_intro"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_iris_scan_96"
+                android:contentDescription="@null"
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:tag="scan"
+                android:textColor="@color/md_white_1000"
+                android:padding="6dp"
+                android:background="@drawable/rectangle_primary_color"
+                android:text="Escanear Sistema"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/btn_scan_system"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txt_msm"
+                android:text="Si Haces un escaneo del sistema ayudas a GoFY a mejor la seguridad"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/container_form_scan"
+            android:padding="10dp"
+            android:layout_margin="6dp"
+            android:background="@drawable/rectangle_white"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v4.view.ViewPager
+                android:layout_marginBottom="10dp"
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="240dp" />
+
+            <TextView
+                android:textColor="@color/md_white_1000"
+                android:padding="10dp"
+                android:background="@drawable/rectangle_primary_color"
+                android:text="Continuar"
+                android:layout_margin="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Por favor pasa la mana por el sensor"
+                android:gravity="center"
+                android:id="@+id/txt_status_sensor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/container_list_sensors"
+            android:orientation="vertical"
+            android:background="@drawable/rectangle_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_status"
+                android:text="Sensores Con Problemas"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_error_96"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/lvSensor"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

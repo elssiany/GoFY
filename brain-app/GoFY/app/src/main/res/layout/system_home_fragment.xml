@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/rectangle_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:id="@+id/txt_status_system"
+                android:text="Sistema Funcionando"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/ic_protect_96"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lvSensor"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:tag="Rendimiento del CPU del sistema"
+                android:padding="6dp"
+                android:background="@drawable/rectangle_white"
+                android:id="@+id/txt_cpu"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_processor_96"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:tag="Memoria Ram usada por el sistema"
+                android:padding="6dp"
+                android:background="@drawable/rectangle_white"
+                android:id="@+id/txt_ram"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_ssd_96"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:tag="Temperatura del sistema"
+                android:padding="6dp"
+                android:background="@drawable/rectangle_white"
+                android:id="@+id/txt_cpu_temp"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_heating_automation_96"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:tag="Señal WiFi del sistema"
+                android:padding="6dp"
+                android:background="@drawable/rectangle_white"
+                android:id="@+id/txt_wifi"
+                android:layout_margin="16dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:drawableTop="@drawable/ic_signal_96"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switch_alarm"
+            android:padding="10dp"
+            android:elevation="2dp"
+            android:background="@drawable/rectangle_white"
+            android:layout_margin="30dp"
+            android:layout_gravity="center"
+            android:textStyle="italic"
+            android:text="Alarm On"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>
