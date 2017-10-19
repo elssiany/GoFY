@@ -9,19 +9,30 @@ public class Sensor {
     private String id;
     private String title;
     private String description;
+    private String location;
     private String type;
     private int idDrawable;
 
 
     public Sensor() {
+
     }
 
-    public Sensor(String id, String title, String description, String type, int idDrawable) {
+    public Sensor(String id, String title, String description, String location, String type, int idDrawable) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.location = location;
         this.type = type;
         this.idDrawable = idDrawable;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getType() {

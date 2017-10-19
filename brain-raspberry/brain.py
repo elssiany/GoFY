@@ -7,29 +7,54 @@ from time import sleep
 import os
 
 
+
+#----------------Configuramos la raspberry, aqui esta con BCM es decir usando el numero del GPIO------------------------
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)#evito los mensajes de innecesarios warning
+
+
+
+#------------------------------iniciamos variables que necesitamos en el sistema---------------------------------------
+
 config = {
   "apiKey": "AIzaSyBwmhqTzDC7QlpPRr63tazjhsBsTuner3U",
   "authDomain": "gofy-c1730.firebaseapp.com",
   "databaseURL": "https://gofy-c1730.firebaseio.com",
   "storageBucket": "gofy-c1730.appspot.com"
 }
-
+#inicializamos el sdk de Firebase
 firebase = pyrebase.initialize_app(config)
 
+#hvariable que contiene la referencia(raiz url) de la base datos en firebase
 db = firebase.database()
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)#evito los mensajes de warning
-
-# declaramos los pines de salida o entrada
-# aqui esta con BCM es decir usando el numero del GPIO lo puedes cambiar a Board pra usar numero de pin fisico
-GPIO.setup(17, GPIO.OUT)#pin de salida para el led
-GPIO.setup(27, GPIO.IN)#pin de lectura para la IR
-GPIO.setup(22, GPIO.OUT)#pin de salida para la alarma
-
+#identificador del producto GoFY
 idProduct = "-Kw24TH46pgvGBWBr8lQ"
+#pines de la respberry que vamos a usar
+pinIR1 = 20
+pinIR2 = 21
+pinIR3 = 16
+pinPIR1 = 12
+pinAlarm = 17
+pinLed1 = 4
 
 
+#------------------------------------pines de entreda que tiene el sistema---------------------------------------------
+GPIO.setup(pinIR1, GPIO.IN)#pin de lectura para el sensor IR (Para la ventana #1)
+GPIO.setup(pinIR2, GPIO.IN)#pin de lectura para el sensor IR (Para la ventana #2)
+GPIO.setup(pinIR3, GPIO.IN)#pin de lectura para el sensor IR (Para la puerta principal de la casa)
+GPIO.setup(pinPIR1, GPIO.IN)#pin de lectura para el sensor PIR (Para detectar objectos dentro de la casa)
+
+
+
+#----------------------------------pines de salida que tiene el sistema------------------------------------------------
+GPIO.setup(pinLed1, GPIO.OUT)#pin de salida para el led que indica cuando la casa esta en modo escaneo de sensores
+GPIO.setup(pinAlarm, GPIO.OUT)#pin de salida para la alarma
+
+
+
+
+#--------------------------metodos necesarios para el buen funcionamiento del sistema----------------------------------
 
 # Return CPU temperature as a character string
 def getCPUtemperature():
@@ -124,40 +149,56 @@ while True:
     # lectura del dato de firebase
     modeScan = db.child("active-systems").child(idProduct).child("system-information").child("modeScan").get()
 
-    # lectura del dato de firebase
-    askPermission = db.child("active-systems").child(idProduct).child("system-information").child("askPermission").get()
 
+    # lectura del dato <askPermission> en firebase
+    askPermission = db.child("active-systems").child(idProduct).child("system-information").child("askPermission").get()
+    # lectura del dato <alarm> en firebase
     alarm = db.child("active-systems").child(idProduct).child("system-information").child("alarm").get()
 
+
     if(alarm == True):
-        GPIO.output(22, alarm.val())
-        # es como un delay pero en segundos, es 4 segundos
-        sleep(4)
-        db.child("active-systems").child(idProduct).child("system-information").child("alarm").set(False)
+        if (modeScan.val() == True):
+            #se enciende la alarma en la casa
+            GPIO.output(pinAlarm, GPIO.HIGH)
+            #la alarma encendida solo por 4 segundos
+            sleep(4)
+            db.child("active-systems").child(idProduct).child("system-information").child("alarm").set(False)
+        else:
+            # se enciende la alarma en la casa
+            GPIO.output(pinAlarm, GPIO.HIGH)
 
 
     if(askPermission.val()=="scan-sensors"):
+        db.child("active-systems").child(idProduct).child("system-information").child("askPermission").set("n")
         if(modeScan.val()==True):
-            db.child("active-systems").child(idProduct).child("system-information").child("modeScan").set(True)
-        else:
             db.child("active-systems").child(idProduct).child("system-information").child("modeScan").set(False)
+        else:
+            db.child("active-systems").child(idProduct).child("system-information").child("modeScan").set(True)
 
 
 
-    #leemos la lectura digital del pi del IR es el GPIO 27
-    lecturaIR = GPIO.input(27)
+    #leemos la lectura digital del pi del IR(de la ventana #1)
+    lecturaIR1 = GPIO.input(pinIR1)
+    # leemos la lectura digital del pi del IR(de la ventana #2)
+    lecturaIR2 = GPIO.input(pinIR2)
 
 
-    if(lecturaIR == True):
-        print("Se envia TRUE a firebase")
-        # se envia a firebase
+    if(lecturaIR1 == True):
+        print("Se detecto movimiento en la ventana #1")
+
         if(modeScan.val()==True):
+            # se envia a firebase
             db.child("report-scan-sensors").child(idProduct).push().set("DM")
-        print("TRUE ENVIADO")
+            print("Se escaneo con exito el sensor de la  ventana #1")
 
-    if(lecturaIR == False):
-        print("Se envia FALSE a firebase")
-        print("FALSE ENVIADO")
+
+    if(lecturaIR2 == False):
+        print("Se detecto movimiento en la ventana #2")
+
+        if (modeScan.val() == True):
+            # se envia a firebase
+            db.child("report-scan-sensors").child(idProduct).push().set("DM")
+            print("Se escaneo con exito el sensor de la  ventana #2")
 
 
     # es como un delay pero en segundos, es 2 segundos

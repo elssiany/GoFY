@@ -46,7 +46,7 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
     SensorAdapter sensorAdapter;
     View rootView=null;
     LinearLayout containerIntro,containerFormScan,containerListSensors;
-    TextView btnNext;
+    TextView btnNext,txtMsm;
     ProgressDialog mProgressDialog=null;
     public static List<Sensor> sensors = new ArrayList<>();
     //ViewPager viewPager;
@@ -72,6 +72,7 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
             containerIntro=(LinearLayout) rootView.findViewById(R.id.container_intro);
             containerListSensors=(LinearLayout) rootView.findViewById(R.id.container_list_sensors);
             btnNext=(TextView) rootView.findViewById(R.id.btn_next);
+            txtMsm =(TextView) rootView.findViewById(R.id.txt_msm);
             sensorAdapter = new SensorAdapter(getActivity());
             recyclerVData.setLayoutManager(layoutManager);
             recyclerVData.setAdapter(sensorAdapter);
@@ -136,8 +137,8 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
                                 idDrawable = R.drawable.ic_home_alarm_96;
                                 numAlarm+=1;
                             }
-                            Sensor sensorObejct=new Sensor(sensor.getKey(), data.get("location").toString()
-                                    , data.get("description").toString(),data.get("type").toString()
+                            Sensor sensorObejct = new Sensor(sensor.getKey(), data.get("name").toString()
+                                    , data.get("description").toString(),data.get("location").toString(),data.get("type").toString()
                                     ,idDrawable);
                             sensors.add(sensorObejct);
                             sensorFragments.add(new SensorFragment(sensorObejct));
@@ -234,9 +235,7 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
 
                     ((ImageView) rootView.findViewById(R.id.img_intro)).setImageDrawable(
                             ContextCompat.getDrawable(getActivity(),R.drawable.ic_iris_scan_96));
-                    ((TextView) rootView
-                            .findViewById(R.id.txt_msm)).setText(
-                                    "Si haces un escaneo del sistema ayudas a GoFY a mejor la seguridad");
+                    txtMsm.setText("Si haces un escaneo del sistema ayudas a GoFY a mejor la seguridad");
                     view.setTag("scan");
                     ((TextView) view).setText("Escanear Sistema");
                     errorSensors=false;
@@ -250,7 +249,18 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
                     mProgressDialog.setMessage("Recopilando datos...");
                     showProgressDialog("Espere, por favor","Recopilando datos...");
                     getReportScan();
+                    btnNext.setEnabled(true);
                 }else {
+                    btnNext.setEnabled(false);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            btnNext.setEnabled(true);
+
+                        }
+                    }, 20000);
+
                     Map<String, Object> sensor = new HashMap<>();
                     sensor.put("id", sensorFragments.get(posiSensor).sensor.getId());
                     sensor.put("dateTime", ServerValue.TIMESTAMP);
@@ -262,6 +272,8 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
                     ).setValue(sensor);
                     posiSensor += 1;
                     showFragment(posiSensor);
+                    txtMsm.setText("Pasar por el sensor "+sensors.get(posiSensor).getTitle()
+                            +", este sensor se localiza --> "+sensors.get(posiSensor).getLocation());
                     if(sensors.get(posiSensor).getType().equals("A")) {
                         FirebaseDatabase.getInstance().getReference().child("active-systems")
                                 .child(ManagerSharedPreferences
@@ -283,16 +295,14 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
 
         if(errorSensors) {
             containerListSensors.setVisibility(View.VISIBLE);
-            ((TextView) rootView.findViewById
-                    (R.id.txt_msm)).setText("GoFY a detectado daños en algunas sensores por favor revisa el reporte y contacta a un asesor lo más pronto posible");
+            txtMsm.setText("GoFY a detectado daños en algunas sensores por favor revisa el reporte y contacta a un asesor lo más pronto posible");
 
             ((ImageView) rootView.findViewById(R.id.img_intro)).setImageDrawable(ContextCompat.getDrawable(
                     getActivity(),R.drawable.ic_error_96));
 
         }else{
             sensorAdapter.removeDatas();
-            ((TextView) rootView.findViewById
-                    (R.id.txt_msm)).setText("Escaneo exitoso, sistema funcionando");
+            txtMsm.setText("Escaneo exitoso, sistema funcionando");
 
             ((ImageView) rootView.findViewById(R.id.img_intro)).setImageDrawable(ContextCompat.getDrawable(
                     getActivity(),R.drawable.ic_protect_96));
@@ -329,6 +339,17 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
 
     private void initViewsForScanSystem(){
 
+        btnNext.setEnabled(false);
+        txtMsm.setText("Pasar por el sensor "+sensors.get(posiSensor).getTitle()
+                +", este sensor se localiza --> "+sensors.get(posiSensor).getLocation());
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btnNext.setEnabled(true);
+                Toast.makeText(getActivity(),"No se detecto ningun sensor, por favor dele continuar...",
+                        Toast.LENGTH_LONG).show();
+            }
+        }, 20000);
 
         FirebaseDatabase.getInstance().getReference().child("report-scan-sensors").child(ManagerSharedPreferences
                 .getPreferences(getActivity(),"idProduct","-Kw24TH46pgvGBWBr8lQ"))
@@ -351,10 +372,21 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
                                         break;
                                 }
                             }
+                            btnNext.setEnabled(false);
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btnNext.setEnabled(true);
+                                    Toast.makeText(getActivity(),"No se detecto ningun sensor, por favor dele continuar...",
+                                            Toast.LENGTH_LONG).show();
+                                }
+                            }, 20000);
                             if (posiSensor >= totalSensors) {
                                 mProgressDialog.setMessage("Recopilando datos...");
                                 showProgressDialog("Espere, por favor", "Recopilando datos...");
                                 getReportScan();
+                                btnNext.setEnabled(true);
                             } else {
                                 posiSensor += 1;
                                 showFragment(posiSensor);
@@ -363,6 +395,8 @@ public class ScanSystemFragment extends Fragment implements View.OnClickListener
                                             .child(ManagerSharedPreferences
                                                     .getPreferences(getActivity(),"idProduct","-Kw24TH46pgvGBWBr8lQ"))
                                             .child("system-information").child("alarm").setValue(true);
+                                    txtMsm.setText("Pasar por el sensor "+sensors.get(posiSensor).getTitle()
+                                            +", este sensor se localiza --> "+sensors.get(posiSensor).getLocation());
                                 }
                             }
                         }
